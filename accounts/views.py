@@ -88,13 +88,10 @@ def LoginView(request):
         password = request.POST['password']
 
         user = authenticate(email=email, password=password)
+        
         if user is not None:
-            if user.role != 'farmer':
-                auth.login(request, user)
-                return redirect(reverse('products:index'))
-            else:
-                messages.error(request, 'Farmers cannot log in here!!')
-                return redirect('login')
+          auth.login(request, user)
+          return redirect(reverse('core:index'))
         else:
             messages.error(request, 'Invalid Credentials!!')
             return redirect('login')
