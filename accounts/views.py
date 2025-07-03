@@ -103,13 +103,10 @@ def LoginView(request):
 def AccountView(request):
      user = request.user
      profile = Profile.objects.get(user=user)
-     address = Address.objects.get(user=user)
-    #  order = Order.objects.get()
+
      context = {
           'user' : user,
           'profile': profile,
-          'address' : address,
-        #   'order' : order,
      }
      return render(request, 'accounts/account.html', context)
 
@@ -118,12 +115,10 @@ def AccountView(request):
 def EditProfileView(request):
      user = request.user
      profile = Profile.objects.get(user=request.user)
-     address = Address.objects.get(user=request.user)
 
      context = {
         'user': user,
         'profile': profile, 
-        'address': address,
      }
      
 

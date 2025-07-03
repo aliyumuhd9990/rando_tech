@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     #my apps
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    
+    #third party
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +136,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/ 'static']
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# MEDIA_URL = '/images/'
+MEDIA_URL = '/img/'
 
 
 # Default primary key field type
