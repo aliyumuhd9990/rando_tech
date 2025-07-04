@@ -137,6 +137,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/ 'static']
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'img/')
 
 
 # Default primary key field type
@@ -157,7 +158,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 #Email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587

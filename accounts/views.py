@@ -123,7 +123,7 @@ def EditProfileView(request):
      
 
      if not profile.profile_img:
-          profile.profile_img = 'img/profile_images/du.png'
+          profile.profile_img = 'img/profile.png'
 
      if request.method == "POST":
           #this is for the CustomUser table
@@ -142,30 +142,11 @@ def EditProfileView(request):
 
           user.save()
           profile.save()
+          print(profile.profile_img)
           messages.success(request, 'Profile Updated!!')
         
           return redirect('account')
      return render(request, 'accounts/edit-profile.html', context)
-
-@login_required
-def EditAddressView(request):
-     address = Address.objects.get(user=request.user)
-     
-
-     if request.method == 'POST':
-          address.state = request.POST.get('state', address.state)
-          address.city = request.POST.get('city', address.city)
-          address.street = request.POST.get('str', address.street)
-          address.location = request.POST.get('lct', address.location)
-
-          address.save()
-          messages.success(request, 'Address Updated!!')
-          return redirect('edit-address')
-     return render(request, 'accounts/edit-address.html', {'address': address})
-
-# @login_required
-# def FarmerDashView(request):
-#      return render(request, 'farmers_page/farmer-dashboard.html')
 
 def VerifyView(request):
     return render(request, 'accounts/email_verification.html')

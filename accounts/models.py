@@ -25,7 +25,7 @@ class Profile(models.Model):
     is_verified = models.BooleanField(default=False)
     id_user = models.IntegerField()
     contact = models.CharField(max_length=11, default="080xxxxxx")
-    profile_img = models.ImageField(upload_to='img/profile_images', default='img/profile_images/profile.png', blank=True, null=False)
+    profile_img = models.ImageField(upload_to='profile_images',  blank=True, null=False)
 
     def __self__(self):
         return self.user.email
