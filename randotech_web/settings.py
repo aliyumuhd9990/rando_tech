@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #my apps
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    'blog.apps.BlogConfig',
     
     #third party
     'widget_tweaks',

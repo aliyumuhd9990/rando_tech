@@ -337,33 +337,19 @@
                 <h1>Latest From Our Blog</h1>
             </div>
             <div class="row pb-3">
+                
+                {% for post in post %}  
                 <div class="col-lg-4 mb-4">
                     <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/blog-1.jpg' %}" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
+                        <img class="img-fluid" src="{{ post.cover_img.url }}" style="height: 27em;"" alt="">
+                        <a class="blog-overlay text-decoration-none" href="{{ post.get_absolute_url }}">
+                            <h5 class="text-white mb-3">{{post.title}}</h5>
+                            <p class="text-primary m-0">{{post.created}}</p>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/blog-2.jpg' %}" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/blog-3.jpg' %}" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
+                {% endfor %}
+                
             </div>
         </div>
     </div>

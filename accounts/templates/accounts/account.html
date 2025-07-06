@@ -47,52 +47,42 @@
       </div>
     </nav>
     {% include 'components/message.html' %}
+    <div class="row d-lg-flex mx-auto">
 
-    <div
-      class="col-lg-6 border-2 shadow-sm mx-auto col-10 border border-light rounded-2 bg-primary text-white text-center mt-5 p-5"
-    >
-      <div class="row">
-        {% if profile.profile_img %}
-        <img
-          src="{{profile.profile_img.url}}"
-          style="width: 300px; height: 150px"
-          class="rounded-circle mx-auto d-block"
-          alt="..."
-        />
-        {% else %}
-        <img
-          src="{% static 'img/profile.png' %}"
-          style="width: 300px; height: 150px"
-          class="rounded-circle mx-auto d-block"
-          alt="Default Image"
-        />
-        {% endif %}
-      </div>
-      <div class="row mt-3">
-        <p class="text-white">{{user.full_name}}</p>
-        <div class="d-grid gap-2">
-          <a
-            href="{% url 'edit-profile' %}"
-            class="btn btn-dark btn-block border-0 py-3"
-            type="button"
-          >
-            Edit Profile
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      class="container-sm mt-5 p-3 bg-body col-lg-6 px-5 shadow-sm rounded-2"
+      <div class="col-lg-4 mt-5 mx-auto">
+        <!-- Author Bio -->
+        <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
+                      {% if profile.profile_img %}
+                      <img src="{{profile.profile_img.url}}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px; height: 90px;">
+                      
+                      {% else %}
+                      <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px; height: 90px;">
+                      {% endif %}
+                      <h3 class="text-primary mb-3">{{user.full_name}}</h3>
+                      <p class="text-uppercase mb-4 text-white" style="letter-spacing: 5px;">BIO</p>
+                      <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit no ut est  ipsum erat kasd amet elitr</p>
+                    </div>
+                  </div>
+    
+                  <div
+      class="container-sm mt-5 p-3 bg-body col-lg-4 px-3 shadow-sm rounded-2"
     >
       <h6 class="text-dark my-3">Profile Info</h6>
       <ul class="list-group">
         <li class="list-group-item"><b>Name:</b> {{user.full_name}}</li>
         <li class="list-group-item"><b>Email:</b> {{user.email}}</li>
         <li class="list-group-item"><b>Contact:</b> {{profile.contact}}</li>
-      </ul>
-      <h6 class="text-dark my-3">Settings</h6>
-      <div class="d-grid gap-2">
-        <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border">
+        <br>
+        <a
+        href="{% url 'edit-profile' %}"
+        class="btn btn-dark btn-block border-0 py-3"
+        >
+        Edit Profile
+      </a>
+    </ul>
+    <h6 class="text-dark my-3">Settings</h6>
+    <div class="d-grid gap-2">
+      <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border">
           Privacy and Security
         </a>
         <a href="" class="btn btn-primary btn-block border-0 py-3 text-start border">
@@ -114,14 +104,15 @@
           Privacy Policy
         </a>
         <a
-          href="{% url 'logout' %}"
+        href="{% url 'logout' %}"
           class="btn btn-dark btn-block border-0 py-3"
         >
           Logout
         </a>
       </div>
     </div>
-
+  </div>
+    
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
@@ -132,11 +123,11 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script
-      src="https://kit.fontawesome.com/e1ae1750b0.js"
+    src="https://kit.fontawesome.com/e1ae1750b0.js"
       crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script>
+      ></script>
+      <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+      <script>
       if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
       }
