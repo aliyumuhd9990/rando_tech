@@ -3,7 +3,7 @@
   {% load static %}
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}blog_posts {% endblock title %}</title>
+    <title>{% block title %}My Posts {% endblock title %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
@@ -46,9 +46,9 @@
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
                 <h3 class="display-4 text-white text-uppercase">Blog</h3>
                 <div class="d-inline-flex text-white">
-                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Blog</a></p>
                     <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">Blog</p>
+                    <p class="m-0 text-uppercase">My Post</p>
                 </div>
                     <a
                     class="btn btn-primary py-2 px-4 d-block  ml-auto d-lg-block"
@@ -132,7 +132,7 @@
                           
                           {% for cat in category %}
                           <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                            <a href="" class="text-decoration-none h6 m-0">{{cat.name}}</a>
+                            <a href="" class="text-decoration-none h6 m-0">{{cat}}</a>
                             <span class="badge badge-primary badge-pill">150</span>
                           </li>
                           {% endfor %}
@@ -141,15 +141,26 @@
                     <!-- Recent Post -->
                     <div class="mb-5">
                         <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h3>
-                        
-                        {% for post in post %}
                         <a class="d-flex align-items-center text-decoration-none mb-3" href="">
-                          <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
-                          <div class="pl-3">
-                            <h6 class="m-1">{{ post.body|truncatechars:50 }}</h6>
-                            <small>{{ post.created }}</small>
-                          </div>
-                          {% endfor %}
+                            <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
+                            <div class="pl-3">
+                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
+                                <small>Jan 01, 2050</small>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none mb-3" href="">
+                            <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
+                            <div class="pl-3">
+                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
+                                <small>Jan 01, 2050</small>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none mb-3" href="">
+                            <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
+                            <div class="pl-3">
+                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
+                                <small>Jan 01, 2050</small>
+                            </div>
                         </a>
                     </div>
     

@@ -112,7 +112,7 @@
                 >
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="{% url 'blog:post_list' %}" class="dropdown-item">Blog List</a>
-                    <a href="single.html" class="dropdown-item">Blog Detail</a>
+                    <a href="{% url 'blog:your_post' %}" class="dropdown-item">Your Post</a>
                 </div>
             </div>
         </li>
@@ -261,8 +261,8 @@
                     >Blog</a
                   >
                   <div class="dropdown-menu rounded-0 m-0">
-                      <a href="blog.html" class="dropdown-item">Blog List</a>
-                      <a href="single.html" class="dropdown-item">Blog Detail</a>
+                      <a href="{% url 'blog:post_list' %}" class="dropdown-item">Blog List</a>
+                      <a href="{% url 'blog:your_post' %}" class="dropdown-item">Your Post</a>
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
