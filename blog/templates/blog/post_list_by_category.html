@@ -77,7 +77,7 @@
                     <div class="mb-5 container">
                         <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Categories</h3>
                         <div class="d-flex flex-wrap m-n1">
-                            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary m-1 bg_active">Posts</a>
+                            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary m-1 {% if not category %}bg_active{% endif %}">Posts</a>
                             {% for cat in category %}
                             <a href="{{ cat.get_absolute_url }}" class="btn btn-outline-primary m-1 {% if selected_category.slug == cat.slug %}bg_active{% endif %}">{{ cat.name }}</a>
                             {% endfor %}
@@ -129,11 +129,7 @@
                               </nav>
                         </div>
                         <!--pagination end -->
-                        <a
-                    class="btn btn-primary py-2 px-4 d-block mt-3  mx-auto"
-                    href="{% url 'blog:create_post' %}"
-                    >Create Post +</a
-                    >
+                        
                     </div>
                 </div>
             </div>

@@ -19,6 +19,27 @@ def PostListView(request):
     }
     return render(request, 'blog/post_list.html', context)
 
+def PostListByCategoryView(request, category_slug=None):
+    categories = Category.objects.all()
+    selected_category = None
+
+    if category_slug:
+        selected_category = get_object_or_404(Category, slug=category_slug)
+        posts = Post.objects.filter(category=selected_category)
+    else:
+        posts = Post.objects.all()
+
+
+
+    
+    context = {
+        'post' : posts,
+        'category' : categories,
+        'selected_category': selected_category,
+
+    }
+    return render(request, 'blog/post_list_by_category.html', context)
+
 @login_required
 def PostDetailView(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,

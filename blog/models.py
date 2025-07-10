@@ -16,7 +16,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('blog:post-list-by-category', args=[self.slug])
+        return reverse('blog:post_list_by_category', args=[self.slug])
 
 class PublishedManager(models.Manager):
     def get_queryset(self):

@@ -13,7 +13,7 @@ except NotRegistered:
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = [
-        'email', 'full_name', 'last_login', 'password'
+        'email', 'full_name', 'last_login', 
     ]
 
 @admin.register(Profile)
