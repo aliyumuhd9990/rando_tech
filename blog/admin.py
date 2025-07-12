@@ -19,5 +19,9 @@ class CategoryAdmin(admin.ModelAdmin):
     '''Admin View for Category'''
     list_display = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
-    
-    
+     
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')

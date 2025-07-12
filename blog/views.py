@@ -3,20 +3,27 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.text import slugify
-from django.db.models import Prefetch
+from django.core.paginator import Paginator
+
 
 app_name= 'blog'
 
 # Create your views here.
 def PostListView(request):
-    posts = Post.published.all()[:4]
+    post_list = Post.published.all()
     categories = Category.objects.all()
+    paginator = Paginator(post_list, 6)  # Show 6 posts per page
 
-    
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
+        
+        
     context = {
-        'post' : posts,
+        'page' : page,
         'category' : categories,
     }
+  
     return render(request, 'blog/post_list.html', context)
 
 def PostListByCategoryView(request, category_slug=None):
@@ -25,17 +32,20 @@ def PostListByCategoryView(request, category_slug=None):
 
     if category_slug:
         selected_category = get_object_or_404(Category, slug=category_slug)
-        posts = Post.objects.filter(category=selected_category)
+        post_list = Post.objects.filter(category=selected_category)
     else:
-        posts = Post.objects.all()
+        post_list = Post.objects.all()
 
 
+    paginator = Paginator(post_list, 6)  # Show 6 posts per page
 
-    
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
     context = {
-        'post' : posts,
         'category' : categories,
         'selected_category': selected_category,
+        'page' : page,
 
     }
     return render(request, 'blog/post_list_by_category.html', context)
@@ -91,7 +101,7 @@ def CreatePostView(request):
     return render(request, 'blog/create_post.html', context)
 
 def YourPostView(request):
-    post = Post.objects.filter(author=request.user)
+    post_list = Post.objects.filter(author=request.user)
     # Get all unique category names for posts by this user
     user_categories = Category.objects.filter(
         category_post__author=request.user
@@ -99,9 +109,14 @@ def YourPostView(request):
 
     # Or if you only want names as a list:
     category_names = user_categories.values_list('name', flat=True)
+    paginator = Paginator(post_list, 6)  # Show 6 posts per page
+
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
     
     context = {
-        'post' : post,
+        'page' : page,
         'category' : category_names,
     }
     return render(request, 'blog/your_post.html', context)
