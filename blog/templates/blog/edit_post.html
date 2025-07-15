@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>
+    {% block title %}
+        edit_post
+    {% endblock title %}
+        </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+  <body>
+    <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section>
+
+    <main>
+          <section class="sign-in-form">
+            <div class="container">
+              
+              <div class="col-lg-5 col-12 mt-5  mx-auto">
+                {% include 'components/message.html' %}
+                <div class="card border-0">
+                  <div class="card-header bg-secondary text-center p-4">
+                            <h1 class="m-0">Edit Post</h1>
+                        </div>
+                        <div class="card-body rounded-bottom  p-3" style="background-color: #158cba;">
+                            <form method="post" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="title" class="form-control border-0 p-4" placeholder="Post Title" value="{{post.title}}" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control border-0 p-4" name="body" rows="3" placeholder="Post Body" required="required">{{post.body}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cover" class="form-label text-black">Post Cover:</label>
+                                    <input type="file" id="cover" name="post_cover" class="form-control border-0 p-4" placeholder="Post Cover" value="{{post.cover_img.url}}" required="required" />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="cover" class="form-label text-black">Category:</label>
+                                    <input type="text" id="cat" name="cat" class="form-control border-0 p-4" placeholder="Category" value="{{post.category}}" disabled required="required" />
+                                    
+                                </div>
+                                
+                                <div>
+                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Post Now</button>
+                                </div>
+                            </form>
+                        </p>
+                       
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </section>
+        </main>
+      </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

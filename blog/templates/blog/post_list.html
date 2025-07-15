@@ -73,8 +73,8 @@
     </div>
     <!-- Header End -->
 
-<!-- Tag category -->
-                    <div class="mb-5 container">
+                    <!-- Tag category -->
+                    <div class="mb-0 container">
                         <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Categories</h3>
                         <div class="d-flex flex-wrap m-n1">
                             <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary m-1 bg_active">Posts</a>
@@ -82,6 +82,16 @@
                             <a href="{{ cat.get_absolute_url }}" class="btn btn-outline-primary m-1 {% if selected_category.slug == cat.slug %}bg_active{% endif %}">{{ cat.name }}</a>
                             {% endfor %}
                         </div>
+                       {% include 'components/message.html' %}
+                        {% if user.is_authenticated %}
+                          <a
+                    class="btn btn-primary py-2 px-4 d-block mt-5 col-lg-6 mx-lg-0  mx-auto"
+                    href="{% url 'blog:create_post' %}"
+                    >Create Post +</a
+                    >
+                        {% endif %}
+                          
+                        
                     </div>
     <!-- Blog Start -->
     <div class="container-fluid py-5">
@@ -90,6 +100,11 @@
                 <div class="col-lg-12">
                     <div class="row pb-3">
                       
+                      {% if tag %}
+                        <h2>Posts tagged with "{{ tag.name }}"</h2>
+                      {% endif %}
+                    
+
                       {% for post in page %} 
                       <div class="col-lg-4 col-6 mb-4">
                         <div class="blog-item position-relative overflow-hidden rounded mb-2">
@@ -110,11 +125,7 @@
                        
                        
                     </div>
-                        <a
-                    class="btn btn-primary py-2 px-4 d-block mt-3  mx-auto"
-                    href="{% url 'blog:create_post' %}"
-                    >Create Post +</a
-                    >
+                        
                 </div>
             </div>
         </div>

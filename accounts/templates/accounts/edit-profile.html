@@ -3,7 +3,7 @@
   {% load static %}
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %} {% endblock title %}</title>
+    <title>{% block title %} Edit-Profile {% endblock title %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
@@ -41,13 +41,13 @@
   </head>
   <body>
     <!-- Navigation-->
-    <nav class="p-3 bg-white shadow-sm static-top">
+    <nav class="p-3 bg-white shadow-sm fixed-top">
       <div class="container">
-        <h3 class=""><span class="text-primary">Edit</span> Profile</h3>
+        <h1 class=""><span class="text-primary">Edit</span> Profile</h1>
       </div>
-    </nav>
-<section class="sign-in-form">
-            <div class="container">
+    </nav><br><br><br>
+<section class="sign-in-form ">
+            <div class="container ">
               
               <div class="col-lg-5 col-12 mt-5  mx-auto">
                 {% include 'components/message.html' %}
@@ -55,7 +55,7 @@
                   <div class="card-header bg-secondary text-center p-4">
                             <h1 class="m-0">Edit Now</h1>
                         </div>
-      <div class="card-body rounded-bottom bg-primary p-3">
+      <div class="card-body rounded-bottom p-3" style="background-color: #158cba;">
                             <form method="post" >
                               {% csrf_token %}
                               <div class="form-group">

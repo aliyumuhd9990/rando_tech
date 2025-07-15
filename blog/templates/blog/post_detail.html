@@ -57,23 +57,22 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row">
-                <div class="col-lg-8">
                     <div class="mb-5">
                         <h6 class="text-primary mb-5">{{post.created}}</h6>
                         <h1 class="mb-5">{{post.title}}</h1>
                         <img class="img-fluid rounded w-100 mb-4" src="{{ post.cover_img.url }}" alt="Image">
                         <p>{{post.body}}</p>
                         
-                        {% if post.author %}
-                        <div class="container mt-5 d-flex justify-content-between">
+                        {% if request.user == post.author %}
+                        <div class="mt-5 d-flex justify-content-between">
                           <a
-                          class="btn btn-primary py-2 px-4 col-6 mx-auto"
-                          href="{% url 'blog:create_post' %}"
+                          class="btn btn-primary py-2 px-4 mx-auto col-4"
+                          href="{% url 'blog:edit_post' post.created.year post.created.month post.created.day post.slug %}"
                           >Edit Post</a
                           >
                           <a
-                          class="btn btn-primary py-2 px-4 col-6   mx-auto"
-                          href="{% url 'blog:create_post' %}"
+                          class="btn btn-primary py-2 px-4 mx-auto col-4"
+                          href="{% url 'blog:delete_post' post.created.year post.created.month post.created.day post.slug%}"
                           >Delete Post</a
                           >
                         </div>
@@ -82,84 +81,68 @@
 
                     <!-- Comment List -->
                     <div class="mb-5">
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">3 Comments</h3>
+                      
+                      
+                      {% with comments.count as total_comments %}
+                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
+                      {% endwith %}
+                      {% for comment in comments %}
                         <div class="media mb-4">
                             <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
                                 style="width: 45px;">
                             <div class="media-body">
-                                <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
-                                <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at.
-                                    Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam
-                                    consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+                                <h6>{{ comment.name }} <small><i>{{ comment.created }}</i></small></h6>
+                                <p>{{ comment.body }}</p>
                                 <button class="btn btn-sm btn-secondary">Reply</button>
                             </div>
+                          </div>
+                          {% endfor %}
                         </div>
-                        <div class="media mb-4">
-                            <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
-                                style="width: 45px;">
-                            <div class="media-body">
-                                <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
-                                <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at.
-                                    Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam
-                                    consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
-                                <button class="btn btn-sm btn-secondary">Reply</button>
-                                <div class="media mt-4">
-                                    <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
-                                        style="width: 45px;">
-                                    <div class="media-body">
-                                        <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum
-                                            et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.
-                                            Gubergren clita aliquyam consetetur, at tempor amet ipsum diam tempor at
-                                            sit.</p>
-                                        <button class="btn btn-sm btn-secondary">Reply</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                        
+                        {% if request.user != post.author %}
                     <!-- Comment Form -->
-                    <div class="bg-secondary rounded p-5">
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
-                        <form method="post">
+                    <div class="bg-secondary rounded p-3">
+                      {% include 'components/message.html' %}
+                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
+                      <form method="post">
+                          {% csrf_token %}
                             <div class="form-group">
                                 <label for="name">Name *</label>
-                                <input type="text" class="form-control border-0" id="name">
+                                <input type="text" name="name" class="form-control border-0" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="email" class="form-control border-0" id="email">
+                                <input type="email" name="email" class="form-control border-0" id="email">
                             </div>
-                            <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control border-0" id="website">
-                            </div>
-
+                           
                             <div class="form-group">
                                 <label for="message">Message *</label>
-                                <textarea id="message" cols="30" rows="5" class="form-control border-0"></textarea>
+                                <textarea id="message" name="body" cols="30" rows="5" class="form-control border-0"></textarea>
                             </div>
                             <div class="form-group mb-0">
                                 <input type="submit" value="Leave Comment" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">
                             </div>
                         </form>
                     </div>
-                </div>
+                
 
+                
+                  
+                
                 <div class="col-lg-4 mt-5 mt-lg-5">
                   <h3 class="text-uppercase mb-5" style="letter-spacing: 5px;">Author</h3>
 
-                    <!-- Author Bio -->
-                    <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
-                        <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
+                  <!-- Author Bio -->
+                  <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
+                    <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
                         <h3 class="text-primary mb-3">{{post.author.full_name}}</h3>
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Tag Cloud</h3>
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">bio</h3>
                         <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit
-                            no ut est ipsum erat kasd amet elitr</p>
-                    </div>
-                   
-                </div>
+                          no ut est ipsum erat kasd amet elitr</p>
+                        </div>
+                        
+                      </div>
+                      {% endif %}
             </div>
         </div>
     </div>

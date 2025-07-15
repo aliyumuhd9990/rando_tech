@@ -52,10 +52,12 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE,
-                             related_name='comments')
+                             related_name='comments',
+                             null=True, blank=True)
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
+    parent = models.ForeignKey('self',null=True,blank=True, related_name='replies', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
@@ -63,3 +65,6 @@ class Comment(models.Model):
         ordering = ('created',)
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
+    
+    def is_reply(self):
+        return self.parent is not None

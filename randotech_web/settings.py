@@ -138,7 +138,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/ 'static']
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'img/')
 
@@ -166,7 +166,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'aliyumuhammad9990@gmail.com'
-EMAIL_HOST_PASSWORD = 'vvso dawf ckmv tsnn'
+EMAIL_HOST_PASSWORD = 'uieu bujj lpeg iptu'
 
 
 #admin customization
@@ -181,19 +181,21 @@ JAZZMIN_SETTINGS = {
     "site_brand": "RandoTech",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": None,
+    "site_logo": 'img/icon.png',
+    "custom_css" : "css/custom.css",
+    
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": None,
+    "login_logo": 'img/icon.png' ,
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": None,
+    "login_logo_dark":  'img/icon.png',
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": None,
+    "site_icon": 'img/icon.png',
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome to RandoTech Administration",
@@ -318,8 +320,8 @@ JAZZMIN_UI_TWEAKS = {
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": True,
-    "brand_colour": False,
-    "accent": "accent-primary",
+    "brand_colour": "navbar-dark",
+    "accent": "accent-info",
     "navbar": "navbar-white navbar-light",
     "no_navbar_border": False,
     "navbar_fixed": True,

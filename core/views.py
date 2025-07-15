@@ -14,3 +14,10 @@ def IndexView(request):
         'category' : category,
     }
     return render(request,'core/index.html', context)
+
+def AboutView(request):
+    return render(request, 'core/about.html')
+def ServicesView(request):
+    return render(request, 'core/services.html')
+def ContactView(request):
+    return render(request, 'core/contact.html')

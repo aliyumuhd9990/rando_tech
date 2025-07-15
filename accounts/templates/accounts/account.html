@@ -41,11 +41,12 @@
   </head>
   <body>
     <!-- Navigation-->
-    <nav class="bg-white shadow-sm">
+    <nav class="bg-white shadow-sm fixed-top">
       <div class="container p-3">
         <h1><span class="text-primary">My</span> Profile</h1>
       </div>
     </nav>
+    <br><br><br>
     {% include 'components/message.html' %}
     <div class="row d-lg-flex mx-auto">
 
@@ -67,7 +68,7 @@
                   <div
       class="container-sm mt-5 p-3 bg-body col-lg-4 px-3 shadow-sm rounded-2"
     >
-      <h6 class="text-dark my-3">Profile Info</h6>
+      <h6 class="text-dark my-3 fw-bolder">Profile Info</h6>
       <ul class="list-group">
         <li class="list-group-item"><b>Name:</b> {{user.full_name}}</li>
         <li class="list-group-item"><b>Email:</b> {{user.email}}</li>
@@ -80,7 +81,7 @@
         Edit Profile
       </a>
     </ul>
-    <h6 class="text-dark my-3">Settings</h6>
+    <h6 class="text-dark my-3 fw-bolder">Settings</h6>
     <div class="d-grid gap-2">
       <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border">
           Privacy and Security
@@ -92,7 +93,7 @@
           Theme
         </a>
       </div>
-      <h6 class="text-dark my-3">Support</h6>
+      <h6 class="text-dark my-3 fw-bolder">Support</h6>
       <div class="d-grid gap-2">
         <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
           Ask a Question
