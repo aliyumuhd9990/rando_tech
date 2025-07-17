@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
+from core.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.text import slugify
@@ -13,6 +14,7 @@ app_name= 'blog'
 def PostListView(request):
     post_list = Post.published.all()
     categories = Category.objects.all()
+    services = Service.objects.all()
     paginator = Paginator(post_list, 6)  # Show 6 posts per page
 
           
@@ -23,12 +25,14 @@ def PostListView(request):
         'page' : page,
         'category' : categories,
         'post_list' : post_list,
+        'services' : services,
     }
   
     return render(request, 'blog/post_list.html', context)
 
 def PostListByCategoryView(request, category_slug=None):
     categories = Category.objects.all()
+    services = Service.objects.all()
     selected_category = None
 
     if category_slug:
@@ -47,7 +51,7 @@ def PostListByCategoryView(request, category_slug=None):
         'category' : categories,
         'selected_category': selected_category,
         'page' : page,
-
+        'services' : services,
     }
     return render(request, 'blog/post_list_by_category.html', context)
 
@@ -59,6 +63,7 @@ def PostDetailView(request, year, month, day, post):
                              publish__month=month,
                              publish__day=day
                             )
+    services = Service.objects.all()
     
      # List of active comments for this post
     comments = post.comments.filter(active=True)
@@ -81,6 +86,7 @@ def PostDetailView(request, year, month, day, post):
         'post' : post,
         'comments' : comments,
         'new_comment' : new_comment,
+        'services' : services,
     }
     return render(request, 'blog/post_detail.html', context)
 
@@ -120,8 +126,10 @@ def CreatePostView(request):
     }
     return render(request, 'blog/create_post.html', context)
 
+@login_required
 def YourPostView(request):
     post_list = Post.objects.filter(author=request.user)
+    services = Service.objects.all()
     # Get all unique category names for posts by this user
     user_categories = Category.objects.filter(
         category_post__author=request.user
@@ -138,6 +146,7 @@ def YourPostView(request):
     context = {
         'page' : page,
         'category' : category_names,
+        'services' : services,
     }
     return render(request, 'blog/your_post.html', context)
 

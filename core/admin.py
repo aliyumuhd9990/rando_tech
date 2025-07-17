@@ -10,3 +10,6 @@ admin.site.index_title = "Welcome to RandoTech Admin Dashboard"
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['name', 'price1', 'price2', 'price3']
+@admin.register(Package)
+class PackageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'price']

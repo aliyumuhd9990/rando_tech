@@ -8,7 +8,7 @@
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
 
-    <!-- Favicon -->
+<!-- Favicon -->
     <link href="{% static 'img/favicon.ico' %}" rel="icon" />
 
     <!-- Google Web Fonts -->
@@ -29,16 +29,15 @@
       href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
       rel="stylesheet"
     />
-    <!--<link
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
-    />-->
+    />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
     <style>
       custom-link {
         color: #158cba;
@@ -237,10 +236,9 @@
         style="width: calc(100% - 30px); z-index: 9"
         >
         <div class="navbar-nav w-100">
-              <a href="" class="nav-item nav-link">Project Writing</a>
-              <a href="" class="nav-item nav-link">Individual Chapters</a>
-              <a href="" class="nav-item nav-link">Plagyarism Checker</a>
-              <a href="" class="nav-item nav-link">Software Project</a>
+{% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="nav-item nav-link">{{s.name}}</a>
+          {% endfor %}
             </div>
         </nav>
     </div>
@@ -308,15 +306,23 @@
                 <div class="col-lg-7">
                     <div class="text-left mb-4">
                         <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
-                        <h1>What is RandoTech All About</h1>
+                        <h1>Welcome to RandoTech</h1>
                     </div>
-                    <p>Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet, sea est sea vero sed et. Sadipscing labore tempor at sit dolor clita consetetur diam. Diam ut diam tempor no et, lorem dolore invidunt no nonumy stet ea labore, dolor justo et sit gubergren diam sed sed no ipsum. Sit tempor ut nonumy elitr dolores justo aliquyam ipsum stet</p>
-                    <p>Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet, sea est sea vero sed et. Sadipscing labore tempor at sit dolor clita consetetur diam. Diam ut diam tempor no et, lorem dolore invidunt no nonumy stet ea labore, dolor justo et sit gubergren diam sed sed no ipsum. Sit tempor ut nonumy elitr dolores justo aliquyam ipsum stet</p>
+                    <p>At RandoTech, we believe in transforming ideas into reality through innovative technology and top-notch services. Whether you're a student, startup, or growing business, our expert-driven solutions are tailored to help you achieve your goals efficiently and affordably. From seamless project writing and web development to software development, data analysis, and plagiarism checking, RandoTech is your go-to platform for comprehensive, quality-driven tech services.
+</p>
+                    <p>What sets us apart is our unwavering commitment to quality, originality, and timely delivery. We understand how critical deadlines and authenticity are—especially for academic and corporate users. That's why we leverage modern tools, experienced professionals, and personalized communication to meet your exact needs.
+
+</p>
+                    <p>Join hundreds of satisfied clients across Nigeria and beyond who trust RandoTech for reliable, transparent, and affordable tech services. Our door is always open for those who value excellence—let’s build something great together.
+</p>
                     
                 </div>
             </div><br>
-            <p>Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet, sea est sea vero sed et. Sadipscing labore tempor at sit dolor clita consetetur diam. Diam ut diam tempor no et, lorem dolore invidunt no nonumy stet ea labore, dolor justo et sit gubergren diam sed sed no ipsum. Sit tempor ut nonumy elitr dolores justo aliquyam ipsum stet</p>
-            <p>Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet, sea est sea vero sed et. Sadipscing labore tempor at sit dolor clita consetetur diam. Diam ut diam tempor no et, lorem dolore invidunt no nonumy stet ea labore, dolor justo et sit gubergren diam sed sed no ipsum. Sit tempor ut nonumy elitr dolores justo aliquyam ipsum stet</p>
+            <h1>Our Philosophy</h1>
+            <p>At RandoTech, we don’t just offer services—we provide solutions. We believe in collaboration, honesty, and delivering real value to our clients. Every project we undertake is treated with full attention to detail and a deep understanding of client needs. Whether it’s writing an academic project that earns distinctions or building a fast, mobile-friendly website that drives conversions, we bring our A-game every time.
+</p>
+            <h1>Why Choose Us</h1>
+            <p>With RandoTech, you're not just hiring a service—you’re building a partnership with a team that truly cares about your success. Our client satisfaction rate speaks volumes about our dedication and consistency. We value originality, confidentiality, and long-term client relationships, and we constantly invest in tools and talent to stay ahead in a fast-changing tech world. If you’re looking for a reliable, innovative, and customer-first tech partner, RandoTech is the name you can trust.</p>
         </div>
     </div>
     <!-- About End -->
@@ -365,18 +371,10 @@
                 Our Services
               </h5>
               <div class="d-flex flex-column justify-content-start">
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Project Writing</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Individual Chapters</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Plagyrism Checker</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Software Project</a
-                >
+                                {% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="text-white mb-2"><i class="fa fa-angle-right mr-2"></i>{{s.name}}</a>
+            
+          {% endfor %}
               </div>
             </div>
           </div>

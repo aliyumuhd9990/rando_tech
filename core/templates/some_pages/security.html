@@ -3,7 +3,7 @@
   {% load static %}
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}post_detail {% endblock title %}</title>
+    <title>{% block title %} Security-Page {% endblock title %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
@@ -45,108 +45,66 @@
     <div class="container-fluid page-header" style="margin-bottom: 90px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
-                <h3 class="display-4 text-white text-uppercase">Post Detail</h3>
+                <h3 class="display-4 text-white text-uppercase">security</h3>
                
             </div>
         </div>
     </div>
     <!-- Header End -->
 
-
-    <!-- Detail Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row">
-                    <div class="mb-5">
-                        <h6 class="text-primary mb-5">{{post.created}}</h6>
-                        <h1 class="mb-5">{{post.title}}</h1>
-                        <img class="img-fluid rounded w-100 mb-4" style="height: 25em; width: 100%;" src="{{ post.cover_img.url }}" alt="Image">
-                        <p>{{post.body}}</p>
-                        
-                        {% if request.user == post.author %}
-                        <div class="mt-5 d-flex justify-content-between">
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:edit_post' post.created.year post.created.month post.created.day post.slug %}"
-                          >Edit Post</a
-                          >
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:delete_post' post.created.year post.created.month post.created.day post.slug%}"
-                          >Delete Post</a
-                          >
-                        </div>
-                        {% endif %}
-                      </div>
-
-                    <!-- Comment List -->
-                    <div class="mb-5">
-                      
-                      
-                      {% with comments.count as total_comments %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
-                      {% endwith %}
-                      {% for comment in comments %}
-                        <div class="media mb-4">
-                            <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
-                                style="width: 45px;">
-                            <div class="media-body">
-                                <h6>{{ comment.name }} <small><i>{{ comment.created }}</i></small></h6>
-                                <p>{{ comment.body }}</p>
-                                <button class="btn btn-sm btn-secondary">Reply</button>
-                            </div>
-                          </div>
-                          {% endfor %}
-                        </div>
-                        
-                        {% if request.user != post.author %}
-                    <!-- Comment Form -->
-                    <div class="bg-secondary rounded p-3">
-                      {% include 'components/message.html' %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
-                      <form method="post">
-                          {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" name="name" class="form-control border-0" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" name="email" class="form-control border-0" id="email">
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="body" cols="30" rows="5" class="form-control border-0"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <input type="submit" value="Leave Comment" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">
-                            </div>
-                        </form>
-                    </div>
-                
-
-                
-                  
-                
-                <div class="col-lg-4 mt-5 mt-lg-5">
-                  <h3 class="text-uppercase mb-5" style="letter-spacing: 5px;">Author</h3>
-
-                  <!-- Author Bio -->
-                  <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
-                    <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-primary mb-3">{{post.author.full_name}}</h3>
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">bio</h3>
-                        <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit
-                          no ut est ipsum erat kasd amet elitr</p>
-                        </div>
-                        
-                      </div>
-                      {% endif %}
-            </div>
-        </div>
-    </div>
-    <!-- Detail End -->
+    <div class="mb-0 container">
+                        <h3 class="text-uppercase mb-4 text-primary" style="letter-spacing: 5px;">Security Policy</h3>
+                        <div class="p-3">
+                            <h3 class="text-capitalize">1. Overview</h3>
+                            <p>RandoTech is committed to protecting your personal data with industry-standard security measures.</p>
+                            <h3 class="text-capitalize">2. Data Encryption and Storage</h3>
+                            <ul>
+                                <li>All sensitive data is encrypted both in transit (using SSL/TLS) and at rest.
+</li>
+                                <li>We store data on secure servers with limited access.</li>
+                                <li>Regular backups are made and stored securely.</li>
+                            </ul>
+                            <h3 class="text-capitalize">3. Access Control</h3><br>
+                            <ul>
+                                <li>We enforce strict role-based access control (RBAC) to ensure only authorized personnel can access sensitive data.</li>
+                                <li>User authentication includes secure password practices and optional two-factor authentication (2FA).</li>
+                            </ul>
+                            <h3>4. Security Monitoring</h3>
+                            <ul>
+                                <li>Our systems are continuously monitored for suspicious activities.</li>
+                                <li>We maintain audit logs of key events to track access and changes.</li>
+                            </ul>
+                            <h3>5. Incident Response Plan</h3>
+                            <p><b>In the event of a data breach:</b></p>
+                            <ul>
+                                <li>We promptly detect and assess the impact</li>
+                                <li>Contain and resolve the issue</li>
+                                <li>Notify affected users and authorities if necessary</li>
+                            </ul>
+                            <h3 class="text-capitalize">6. User Responsibility</h3>
+                            <p><b>We encourage users to:</b></p>
+                            <ul>
+                                <li>Use strong and unique passwords</li>
+                                <li>Log out of accounts when finished</li>
+                                <li>Report any suspicious activity immediately</li>
+                            </ul>
+                            <h3 class="text-capitalize">7. Third-party Security</h3>
+                            <ul>
+                                <li>We only work with vendors who meet our security standards</li>
+                                <li>Contracts require that third parties maintain confidentiality and data protection standards</li>
+                            </ul>
+                            <h3 class="text-capitalize">8. Compliance and Certification</h3>
+                            <p><b>We aim to comply with relevant data protection regulations such as:</b></p>
+                            <ul>
+                                <li>GDPR (Europe)</li>
+                                <li>CCPA (California)</li>
+                                <li>NDPR (Nigeria)</li>
+                            </ul>
+                            <h3 class="text-capitalize">9. Training and Awareness</h3>
+                            <p>All employees undergo regular security awareness training, including phishing simulations and secure data handling practices.</p>
+                            <h3 class="text-capitalize">10. Review and Updates</h3>
+                            <p>This policy is reviewed annually or whenever significant changes occur in technology or regulation.</p>
+                    </div></div>
 
 
 <!-- Footer Start -->

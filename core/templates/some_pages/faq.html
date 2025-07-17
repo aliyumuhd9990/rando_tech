@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %} FAQs-Page {% endblock title %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link
+      href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+    
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">FAQs</h3>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="mb-0 container">
+                        <h3 class="text-uppercase mb-4 text-primary" style="letter-spacing: 5px;">Frequently Answer Questoins</h3>
+                        <div class="p-3 container">
+                            <div class="dropdown">
+                                <h3>1. General Questions</h3>
+                                <ol class="col-8">
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            What is RandoTech?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> RandoTech is a modern tech service and cyber café that offers internet access, computer rentals, printing, scanning, tech support, gadget repairs, online registrations, and digital services to the general public.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Where is RandoTech located?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> RandoTech is located in [Insert your full address here, e.g., Kumbotso, Kano State, Nigeria]. You can find our location on Google Maps or contact us directly for directions.
+</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            What services does RandoTech offer?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> We provide a wide range of services including internet browsing, printing, scanning, photocopying, phone/laptop repairs, exam and job registrations (like JAMB, NYSC, WAEC), graphic design, typing, lamination, and computer training.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            What are your hours of operation?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> We are open Monday to Saturday from 8:00 AM to 6:00 PM. On Sundays, we operate from 10:00 AM to 4:00 PM (if applicable).</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Do you offer home services?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Yes, depending on the request, we offer home services for device repairs, online registrations, and training. Contact us to confirm availability and pricing.</p>
+                                    </li></ol>
+                                    <h3>2. Account & Registration</h3>
+                                    <ol class="container">
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link col-8 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Do I need to create an account?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> No, walk-in customers can access most services. However, having an account allows you to book systems online, track your repair history, and receive special discounts.
+</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            How can I register?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> You can register on our website or at our front desk. Just provide your name, phone number, and email address to get started.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                        How can I reset my password?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Simply click on the “Forgot Password” link on the login page and follow the instructions to reset your password via email or SMS.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Can I update my profile information?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Yes. Log in to your account and go to the "My Profile" section to update your name, contact details, and preferences.</p>
+                                    </li>
+                                </ol>
+                                <h3>3. Security & Privacy</h3>
+                                <ol  class="container">
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            How is my personal data protected?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> We follow strict data protection practices. Personal details are never shared or stored insecurely.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Are my online activities monitored?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> We monitor internet usage for security purposes but never track private activities or personal data unless required by law.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            If I suspect a security issue?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Please report it immediately to our staff or email us at [your-email@example.com]. We will take immediate action.</p>
+                                    </li>
+                                </ol>
+                                <h3>4. Feedback & Complaints</h3>
+                                <ol class="container">
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            How to submit FB about a service?
+
+                                        </a>
+                                        <p class="dropdown-menu p-4"> You can drop a review at our front desk, use our website’s contact form, or message us via WhatsApp or social media.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Who to contact for unresolved issues?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Reach out to the manager directly in-store, or email us at randotech55@gmail.com.</p>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                            Do you have a customer service line?
+                                        </a>
+                                        <p class="dropdown-menu p-4"> Yes, you can reach us on 📞 +234 8026761796 during working hours.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                    </div></div>
+
+
+<!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5"
+      style="margin-top: 90px"
+    >
+      <div class="row pt-5">
+        <div class="col-lg-7 col-md-12">
+          <div class="row">
+            <div class="col-md-6 mb-5">
+              <h5
+                class="text-primary text-uppercase mb-4"
+                style="letter-spacing: 5px"
+              >
+                Get In Touch
+              </h5>
+              <p>
+                <i class="fa fa-map-marker-alt mr-2"></i>Zoo Road, Kano State.
+                Nigeria
+              </p>
+              <p><i class="fa fa-phone-alt mr-2"></i>+234 802 676 1796</p>
+              <p><i class="fa fa-envelope mr-2"></i>randotech05@gmail.com</p>
+              <div class="d-flex justify-content-start mt-4">
+                <a class="btn btn-outline-light btn-square mr-2" href="#"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a class="btn btn-outline-light btn-square mr-2" href="#"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-outline-light btn-square mr-2" href="#"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a class="btn btn-outline-light btn-square" href="#"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+            <div class="col-md-6 mb-5">
+              <h5
+                class="text-primary text-uppercase mb-4"
+                style="letter-spacing: 5px"
+              >
+                Our Services
+              </h5>
+              <div class="d-flex flex-column justify-content-start">
+{% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="text-white mb-2"><i class="fa fa-angle-right mr-2"></i>{{s.name}}</a>
+            
+          {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-12 mb-5">
+          <h5
+            class="text-primary text-uppercase mb-4"
+            style="letter-spacing: 5px"
+          >
+            Newsletter
+          </h5>
+          <p>
+            Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum
+            sea tempor magna tempor. Accu kasd sed ea duo ipsum. Dolor duo
+            eirmod sea justo no lorem est diam
+          </p>
+          <div class="w-100">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control border-light"
+                style="padding: 30px"
+                placeholder="Your Email Address"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary px-4">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+      style="border-color: rgba(256, 256, 256, 0.1) !important"
+    >
+      <div class="row">
+        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+          <p class="m-0 text-white">
+            &copy; <a href="#">RandoTech</a>. All Rights Reserved. Designed by
+            <a href="https://htmlcodex.com">Aliyu Muhammad Musa</a>
+          </p>
+        </div>
+        <div class="col-lg-6 text-center text-md-right">
+          <ul class="nav d-inline-flex">
+            <li class="nav-item">
+              <a class="nav-link text-white py-0" href="#">Privacy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white py-0" href="#">Terms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white py-0" href="#">FAQs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white py-0" href="#">Help</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
+
+    

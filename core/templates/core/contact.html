@@ -29,16 +29,15 @@
       href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
       rel="stylesheet"
     />
-    <!--<link
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
-    />-->
+    />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
     <style>
       custom-link {
         color: #158cba;
@@ -237,10 +236,10 @@
         style="width: calc(100% - 30px); z-index: 9"
         >
         <div class="navbar-nav w-100">
-              <a href="" class="nav-item nav-link">Project Writing</a>
-              <a href="" class="nav-item nav-link">Individual Chapters</a>
-              <a href="" class="nav-item nav-link">Plagyarism Checker</a>
-              <a href="" class="nav-item nav-link">Software Project</a>
+          
+          {% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="nav-item nav-link">{{s.name}}</a>
+          {% endfor %}
             </div>
         </nav>
     </div>
@@ -321,7 +320,7 @@
                         <div class="card-header bg-light text-center p-4">
                             <h1 class="m-0">Email Us Now</h1>
                         </div>
-                        <div class="card-body rounded-bottom bg-primary p-5">
+                        <div class="card-body rounded-bottom p-5" style="background-color: #158cba;">
                             <form method="post" >
                               {% csrf_token %}
                                 <div class="form-group">
@@ -334,7 +333,8 @@
                             pattern="[^ @]*@[^ @]*" class="form-control border-0 p-4" placeholder="Your email" required="required" />
                         </div>
                                 <div class="form-group">
-                                    <textarea name="" class="form-control" cols="30" rows="5" id=""></textarea>
+                                    <label for="" class="form-label">Message:</label>
+                                    <textarea name="" class="form-control" cols="30" rows="5" id=""> </textarea>
                                 </div>
                                 
                                 <div>
@@ -393,18 +393,10 @@
                 Our Services
               </h5>
               <div class="d-flex flex-column justify-content-start">
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Project Writing</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Individual Chapters</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Plagyrism Checker</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Software Project</a
-                >
+                                {% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="text-white mb-2"><i class="fa fa-angle-right mr-2"></i>{{s.name}}</a>
+            
+          {% endfor %}
               </div>
             </div>
           </div>

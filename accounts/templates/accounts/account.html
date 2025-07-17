@@ -83,22 +83,23 @@
     </ul>
     <h6 class="text-dark my-3 fw-bolder">Settings</h6>
     <div class="d-grid gap-2">
-      <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border">
-          Privacy and Security
+      <a href="{% url 'core:privacy' %}" class="btn btn-primary btn-block border-0 py-3 text-start border">
+          Privacy 
         </a>
-        <a href="" class="btn btn-primary btn-block border-0 py-3 text-start border">
+        <a href="{% url 'core:security' %}" class="btn btn-primary btn-block border-0 py-3 text-start border">
+          Security
+        </a>
+        <a href="{% url 'core:about' %}" class="btn btn-primary btn-block border-0 py-3 text-start border">
           About
         </a>
-        <a href="" class="btn btn-primary btn-block border-0 py-3 text-start border">
-          Theme
-        </a>
+        
       </div>
       <h6 class="text-dark my-3 fw-bolder">Support</h6>
       <div class="d-grid gap-2">
-        <a href="#" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
+        <a href="{% url 'core:ask' %}" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
           Ask a Question
         </a>
-        <a href="" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
+        <a href="{% url 'core:faq' %}" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
           FAQ
         </a>
         <a href="" class="btn btn-primary btn-block border-0 py-3 text-start border my-custom-btn">
@@ -132,6 +133,7 @@
       if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
       }
+      
     </script>
   </body>
 </html>

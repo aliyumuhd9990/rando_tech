@@ -3,7 +3,7 @@
   {% load static %}
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}post_detail {% endblock title %}</title>
+    <title>{% block title %} Privacy-Page {% endblock title %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
@@ -45,108 +45,73 @@
     <div class="container-fluid page-header" style="margin-bottom: 90px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
-                <h3 class="display-4 text-white text-uppercase">Post Detail</h3>
+                <h3 class="display-4 text-white text-uppercase">Privacy</h3>
                
             </div>
         </div>
     </div>
     <!-- Header End -->
 
+    <div class="mb-0 container">
+                        <h3 class="text-uppercase mb-4 text-primary" style="letter-spacing: 5px;">Privacy Policy</h3>
+                        <div class="p-3">
+                            <h3 class="text-capitalize">1. Introduction</h3>
+                            <p>At RandoTech, your privacy is very important to us. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our website, mobile application, and other services.</p>
+                            <h3 class="text-capitalize">2. Information we collect</h3>
+                            <p><b>Personal Data:</b>
+We may collect personally identifiable information such as your name, email address, phone number and more when you register, or contact us.</p>
 
-    <!-- Detail Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row">
-                    <div class="mb-5">
-                        <h6 class="text-primary mb-5">{{post.created}}</h6>
-                        <h1 class="mb-5">{{post.title}}</h1>
-                        <img class="img-fluid rounded w-100 mb-4" style="height: 25em; width: 100%;" src="{{ post.cover_img.url }}" alt="Image">
-                        <p>{{post.body}}</p>
-                        
-                        {% if request.user == post.author %}
-                        <div class="mt-5 d-flex justify-content-between">
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:edit_post' post.created.year post.created.month post.created.day post.slug %}"
-                          >Edit Post</a
-                          >
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:delete_post' post.created.year post.created.month post.created.day post.slug%}"
-                          >Delete Post</a
-                          >
-                        </div>
-                        {% endif %}
-                      </div>
+<p><b>Usage Data:</b>
+This includes your IP address, browser type, pages visited, time spent, and other analytical data.</p>
 
-                    <!-- Comment List -->
-                    <div class="mb-5">
-                      
-                      
-                      {% with comments.count as total_comments %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
-                      {% endwith %}
-                      {% for comment in comments %}
-                        <div class="media mb-4">
-                            <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
-                                style="width: 45px;">
-                            <div class="media-body">
-                                <h6>{{ comment.name }} <small><i>{{ comment.created }}</i></small></h6>
-                                <p>{{ comment.body }}</p>
-                                <button class="btn btn-sm btn-secondary">Reply</button>
-                            </div>
-                          </div>
-                          {% endfor %}
-                        </div>
-                        
-                        {% if request.user != post.author %}
-                    <!-- Comment Form -->
-                    <div class="bg-secondary rounded p-3">
-                      {% include 'components/message.html' %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
-                      <form method="post">
-                          {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" name="name" class="form-control border-0" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" name="email" class="form-control border-0" id="email">
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="body" cols="30" rows="5" class="form-control border-0"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <input type="submit" value="Leave Comment" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">
-                            </div>
-                        </form>
-                    </div>
-                
-
-                
-                  
-                
-                <div class="col-lg-4 mt-5 mt-lg-5">
-                  <h3 class="text-uppercase mb-5" style="letter-spacing: 5px;">Author</h3>
-
-                  <!-- Author Bio -->
-                  <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
-                    <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-primary mb-3">{{post.author.full_name}}</h3>
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">bio</h3>
-                        <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit
-                          no ut est ipsum erat kasd amet elitr</p>
-                        </div>
-                        
-                      </div>
-                      {% endif %}
-            </div>
-        </div>
-    </div>
-    <!-- Detail End -->
+<p><b>Cookies and Tracking Technologies:</b>
+We use cookies, beacons, and similar technologies to personalize your experience, analyze performance, and improve our services.</p>
+                            <h3 class="text-capitalize">3. how we use your information</h3><br>
+                            <ul>
+                                <li>To deliver and maintain our service
+</li>
+                                <li>To process transactions
+</li>
+                                <li>To send updates, newsletters, and promotional materials (if opted in)</li>
+                                <li>To respond to customer service inquiries
+</li>
+                                <li>To analyze trends and improve functionality
+</li>
+                            </ul>
+                            <h3>4. Legal Basis for Processing</h3>
+                            <p><b>We process your data under the following legal bases:</b></p>
+                            <ul>
+                                <li>Your consent</li>
+                                <li>Contractual obligations</li>
+                                <li>Legal obligations</li>
+                                <li>Legitimate interests</li>
+                            </ul>
+                            <h3>5. How We Share Your Information</h3>
+                            <p><b>We may share your information with:</b></p>
+                            <ul>
+                                <li>Trusted third-party service providers (e.g., Googgle Authorition)</li>
+                                <li>Authorities if required by law</li>
+                                <li>New owners in the event of a business acquisition</li>
+                            </ul>
+                            <h3 class="text-capitalize">6. Your Data Protection Rights</h3>
+                            <p><b>Depending on your location, you may have the right to:</b></p>
+                            <ul>
+                                <li>Access your personal data</li>
+                                <li>Request correction or deletion</li>
+                                <li>Object to processing</li>
+                            </ul>
+                            <h3 class="text-capitalize">7. How Long We Keep Your Data</h3>
+                            <p>We retain your data only as long as necessary for the purposes outlined in this policy, unless a longer retention period is required by law.
+</p>
+                            <h3 class="text-capitalize">8. International Data Transfers</h3>
+                            <p>If we transfer your data internationally, we ensure adequate safeguards are in place, such as Standard Contractual Clauses (SCCs) or consent-based mechanisms.</p>
+                            <h3 class="text-capitalize">9. Changes to This Privacy Policy</h3>
+                            <p>We may update this policy from time to time. We will notify you of significant changes via email or our website.
+</p>
+                            <h3 class="text-capitalize">10. Contact Information</h3>
+                            <p><b>If you have questions or concerns about this Privacy Policy, please contact us at:</b>
+📧 randotech55@gmail.com</p>
+                    </div></div>
 
 
 <!-- Footer Start -->

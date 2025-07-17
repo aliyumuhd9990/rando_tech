@@ -45,7 +45,7 @@
     <div class="container-fluid page-header" style="margin-bottom: 90px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
-                <h3 class="display-4 text-white text-uppercase">Post Detail</h3>
+                <h3 class="display-4 text-white text-uppercase">Service Detail</h3>
                
             </div>
         </div>
@@ -56,93 +56,77 @@
     <!-- Detail Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="row">
-                    <div class="mb-5">
-                        <h6 class="text-primary mb-5">{{post.created}}</h6>
-                        <h1 class="mb-5">{{post.title}}</h1>
-                        <img class="img-fluid rounded w-100 mb-4" style="height: 25em; width: 100%;" src="{{ post.cover_img.url }}" alt="Image">
-                        <p>{{post.body}}</p>
-                        
-                        {% if request.user == post.author %}
-                        <div class="mt-5 d-flex justify-content-between">
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:edit_post' post.created.year post.created.month post.created.day post.slug %}"
-                          >Edit Post</a
-                          >
-                          <a
-                          class="btn btn-primary py-2 px-4 mx-auto col-4"
-                          href="{% url 'blog:delete_post' post.created.year post.created.month post.created.day post.slug%}"
-                          >Delete Post</a
-                          >
-                        </div>
-                        {% endif %}
-                      </div>
-
-                    <!-- Comment List -->
-                    <div class="mb-5">
-                      
-                      
-                      {% with comments.count as total_comments %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
-                      {% endwith %}
-                      {% for comment in comments %}
-                        <div class="media mb-4">
-                            <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1"
-                                style="width: 45px;">
-                            <div class="media-body">
-                                <h6>{{ comment.name }} <small><i>{{ comment.created }}</i></small></h6>
-                                <p>{{ comment.body }}</p>
-                                <button class="btn btn-sm btn-secondary">Reply</button>
-                            </div>
-                          </div>
-                          {% endfor %}
-                        </div>
-                        
-                        {% if request.user != post.author %}
-                    <!-- Comment Form -->
-                    <div class="bg-secondary rounded p-3">
-                      {% include 'components/message.html' %}
-                      <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
-                      <form method="post">
-                          {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" name="name" class="form-control border-0" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" name="email" class="form-control border-0" id="email">
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="body" cols="30" rows="5" class="form-control border-0"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <input type="submit" value="Leave Comment" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">
-                            </div>
-                        </form>
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" style="height: 25em; width: 100%;" src="{{service.cover_img.url}}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-3">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">{{service.name}}</h5>
                     </div>
-                
-
-                
-                  
-                
-                <div class="col-lg-4 mt-5 mt-lg-5">
-                  <h3 class="text-uppercase mb-5" style="letter-spacing: 5px;">Author</h3>
-
-                  <!-- Author Bio -->
-                  <div class="d-flex flex-column text-center bg-dark rounded mb-5 py-5 px-4">
-                    <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-primary mb-3">{{post.author.full_name}}</h3>
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">bio</h3>
-                        <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit
-                          no ut est ipsum erat kasd amet elitr</p>
-                        </div>
+                    <p class="mb-3">{{service.description}}</p>
+                    <h2>Packages</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                            </tr>
+                            
+                            
+                            {% for p in service.packages.all %}
+                            <tr>
+                              <td>{{p.name}}</td>
+                              <td>&#8358;{{p.price}}</td>
+                            </tr>
+                            {% endfor %}
                         
-                      </div>
-                      {% endif %}
+                        </thead>
+                    </table>
+                    
+                </div>
+                <h2 class="mt-3">Showcase Our Work</h2>
+                   <!-- Category Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="{% static 'img/cat-1.jpg' %}" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Web Design</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="{% static 'img/cat-2.jpg' %}" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Development</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="{% static 'img/cat-3.jpg' %}" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Game Design</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Category Start -->
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -193,7 +177,8 @@
                 Our Services
               </h5>
               <div class="d-flex flex-column justify-content-start">
-{% for s in services %}
+                
+                {% for s in services %}
           <a href="{{ s.get_absolute_url }}" class="text-white mb-2"><i class="fa fa-angle-right mr-2"></i>{{s.name}}</a>
             
           {% endfor %}

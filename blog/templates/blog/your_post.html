@@ -182,18 +182,10 @@
                 Our Services
               </h5>
               <div class="d-flex flex-column justify-content-start">
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Project Writing</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Individual Chapters</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Plagyrism Checker</a
-                >
-                <a class="text-white mb-2" href="#"
-                  ><i class="fa fa-angle-right mr-2"></i>Software Project</a
-                >
+                {% for s in services %}
+          <a href="{{ s.get_absolute_url }}" class="text-white mb-2"><i class="fa fa-angle-right mr-2"></i>{{s.name}}</a>
+            
+          {% endfor %}
               </div>
             </div>
           </div>
