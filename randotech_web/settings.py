@@ -1,6 +1,6 @@
 from pathlib import Path
 from django.contrib.messages import constants as messages
-import os
+import os, dj_database_url
 from django.urls import reverse_lazy
 
 
@@ -76,17 +76,28 @@ WSGI_APPLICATION = 'randotech_web.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:pkiuCZNHUYWKPszQbbyeqvBQcekrzDOZ@nozomi.proxy.rlwy.net:27697/railway',
+        conn_max_age=600,
+        ssl_require=True
+    )
+        
+        # {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER' : 'postgres',
-        'PASSWORD' : '123456',
-        'HOST' : 'localhost',
-        'PORT' : '5432'
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'randotechdb',
+        # 'USER' : 'randotechdb_user',
+        # 'PASSWORD' : 'yHwEBTJWMxlLyWOGeAbIupmEIYKEJuFT',
+        # 'HOST' : 'dpg-d1sv7rmmcj7s73avgsu0-a',
+        # 'PORT' : '5432',
+        # 'OPTIONS' : {
+        #     'sslmode' : 'require',
+        # }
+        
+        
 
-    }
+    # }
 }
 
 
