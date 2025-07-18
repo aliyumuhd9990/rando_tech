@@ -12,7 +12,7 @@ urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('core/', include('core.urls', namespace='core')),
+    path('', include('core.urls', namespace='core')),
     path('blog/', include('blog.urls', namespace='blog')),
 ]
 
