@@ -1,26 +1,26 @@
 {
-    "builds": [
-      {
-        "src": "randotech_web/wsgi.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "15mb",
-          "runtime": "python3.9"
-        }
-      },
-      {
-        "src": "build_files.sh",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "static"
-        }
+  "builds": [
+    {
+      "src": "randotech_web/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.12"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "randotech_web/wsgi.py"
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/python",
+      "config": {
+        "distDir": "static"
       }
-    ],
-    "outputDirectory": "static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "randotech_web/wsgi.py"
+    }
+  ],
+  "outputDirectory": "static"
 }
