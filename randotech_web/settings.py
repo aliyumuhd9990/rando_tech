@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     
     #third party
     'widget_tweaks',
+    'cloudinary', 
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'img/')
+
+#image storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dxgmlh3af',
+    'API_KEY': '748512866152941',
+    'API_SECRET': 'cMu3eHk-Y2wDK2fbjQrHWJZprpw'
+}
+
 
 
 # Default primary key field type
