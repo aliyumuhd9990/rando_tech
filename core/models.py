@@ -26,4 +26,8 @@ class Package(models.Model):
     name = models.CharField(max_length=50, default='product')
     price = models.IntegerField(default=0)
     
+class ContactEmail(models.Model):
+    name = models.CharField(max_length=50)
+    memail = models.EmailField(max_length=225)
+    msg = models.TextField()
     

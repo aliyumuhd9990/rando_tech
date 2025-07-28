@@ -30,11 +30,12 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
   <body>
-    <section class="preloader">
-      <div class="spinner">
-        <span class="sk-inner-circle"></span>
-      </div>
-    </section>
+      <!-- Preloader -->
+<div id="preloader" class="position-fixed top-0 start-0 w-100 h-100 bg-white d-flex justify-content-center align-items-center" style="z-index: 1050;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
 
     <main>
           <section class="sign-in-form">
@@ -80,6 +81,18 @@
           </section>
         </main>
       </div>
+
+       <!-- JavaScript: force preloader for 3 seconds -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      const preloader = document.getElementById("preloader");
+      if (preloader) {
+        preloader.remove(); // Removes the preloader after 3s
+      }
+    }, 2000); // 2000 milliseconds = 2 seconds
+  });
+</script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

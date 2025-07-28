@@ -1,23 +1,38 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import *
 from .models import *
+from accounts.models import *
+from django.contrib import messages
 
 app_name = 'core'
 
 
 # Create your views here.
 def IndexView(request):
+    # user = request.user
     posts = Post.published.all()[:4]
     category = Category.objects.all()
     service = Service.objects.all()
     services = Service.objects.all()
+    # acc = Profile.objects.get(user=user)
     
+    if request.method == 'POST':
+        name = request.POST['name']
+        memail = request.POST['memail']
+        msg = request.POST['msg']
+        
+        contact = ContactEmail.objects.create(name=name, memail=memail, msg=msg)
+        contact.save()
+        messages.success(request, 'Message sent successful!')
+        return redirect(reverse('core:index'))
+        
     
     context = {
         'post' : posts,
         'category' : category,
         'service' : service,
         'services' : services,
+        # 'acc' : acc,
     }
     return render(request,'core/index.html', context)
 

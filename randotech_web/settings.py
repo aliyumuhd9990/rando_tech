@@ -15,9 +15,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-leob4qo(_yvxof!j!%t@&v43$&^gx2)2=45myzg$ic0*fyw(rx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.onrender.com']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     
     #third party
     'widget_tweaks',
+    'cloudinary', 
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -78,15 +80,15 @@ WSGI_APPLICATION = 'randotech_web.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:pkiuCZNHUYWKPszQbbyeqvBQcekrzDOZ@nozomi.proxy.rlwy.net:27697/railway',
-        conn_max_age=600,
-        ssl_require=True
-    )
+    # 'default': dj_database_url.config(
+    #     default='postgresql://postgres:pkiuCZNHUYWKPszQbbyeqvBQcekrzDOZ@nozomi.proxy.rlwy.net:27697/railway',
+    #     conn_max_age=600,
+    #     ssl_require=True
+    # )
         
-        # {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+       'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'randotechdb',
         # 'USER' : 'randotechdb_user',
@@ -99,7 +101,7 @@ DATABASES = {
         
         
 
-    # }
+    }
 }
 
 
@@ -146,6 +148,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'img/')
 
+#image storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dxgmlh3af',
+    'API_KEY': '748512866152941',
+    'API_SECRET': 'cMu3eHk-Y2wDK2fbjQrHWJZprpw'
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

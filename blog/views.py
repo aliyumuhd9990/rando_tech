@@ -127,14 +127,13 @@ def CreatePostView(request):
     return render(request, 'blog/create_post.html', context)
 
 @login_required
-def YourPostView(request):
-    post_list = Post.objects.filter(author=request.user)
+def YourPostView(request, category_slug=None):
     services = Service.objects.all()
+    post_list = Post.objects.filter(author=request.user)
     # Get all unique category names for posts by this user
     user_categories = Category.objects.filter(
         category_post__author=request.user
     ).distinct()
-
     # Or if you only want names as a list:
     category_names = user_categories.values_list('name', flat=True)
     paginator = Paginator(post_list, 6)  # Show 6 posts per page

@@ -132,17 +132,17 @@ def EditProfileView(request):
 
           #this is for profile table
           profile.contact = request.POST.get('contact', profile.contact)
+          profile.bio = request.POST.get('bio', profile.bio)
         #   img = request.FILES.get('file')
           
 
-          if 'file' in request.FILES:
+          if request.FILES.get('file'):
                profile.profile_img = request.FILES['file']
 
 
 
           user.save()
           profile.save()
-          print(profile.profile_img)
           messages.success(request, 'Profile Updated!!')
         
           return redirect('account')

@@ -5,7 +5,72 @@
 {% endblock title %}
  
 
+
 {% block content %}
+{% if request.user.is_authenticated %}
+        <!--Start Dashboard-->
+        <div class="container py-5">
+    <h2 class="fw-bold mb-4 text-center text-primary">Welcome back, {{request.user.full_name}}!</h2>
+
+    <div class="row g-4 justify-content-center mb-5">
+      <div class="col-6  col-md-3">
+        <a href="{% url 'blog:create_post' %}" class="card act text-center p-3 shadow-sm fw-bolder" style="cursor: pointer;">
+          <div class="mb-2 fs-4">📝</div>
+          <div>Write a Blog Post</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="{% url 'blog:post_list' %}" class="card act text-center p-3 shadow-sm fw-bolder" style="cursor: pointer;">
+          <div class="mb-2 fs-4">📄</div>
+          <div>Blog</div>
+        </a>
+      </div>
+      <div class="col-6  col-md-3">
+        <a href="{% url 'blog:your_post' %}" class="card act text-center p-3 shadow-sm fw-bolder" style="cursor: pointer;">
+          <div class="mb-2 fs-4">🧰</div>
+          <div>My Posts</div>
+        </a>
+      </div>
+      <div class="col-6  col-md-3">
+        <a href="{% url 'core:services' %}" class="card act text-center p-3 shadow-sm fw-bolder" style="cursor: pointer;">
+          <div class="mb-2 fs-4">🛒</div>
+          <div>Browse Services</div>
+        </a>
+      </div>
+    </div>
+
+    <h4 class="mb-3 text-primary">Latest Blog Posts</h4>
+    <div class="list-group">
+        
+        {% for p in post %}
+        <a href="{{ p.get_absolute_url }}" class="list-group-item list-group-item-action mb-2">
+            <strong>{{p.title}}</strong><br>
+            <small><span class="text-primary">by {{p.author.full_name}}</span> - {{p.body|truncatechars:100}}</small>
+        </a>
+        {% endfor %}
+        <div class="col-12 text-center">
+            <a href="{% url 'blog:post_list' %}" id="another" class="text-primary ">View All Posts</a>
+        </div>
+    </div>
+    <h4 class="mb-3 text-primary mt-5">Our Services</h4>
+    <div class="list-group">
+        
+        {% for p in services|slice:":4" %}
+        <a href="{{ p.get_absolute_url }}" class="list-group-item list-group-item-action mb-2">
+            <strong>{{p.name}}</strong><br>
+            <small><span class="text-primary">{{p.description|truncatechars:100}}</small>
+        </a>
+        {% endfor %}
+        <div class="col-12 text-center">
+            <a href="{% url 'core:services' %}" id="another" class="text-primary ">View All Services</a>
+        </div>
+    </div>
+
+
+  </div>
+
+        <!--end Dashboard-->
+{% else %}
       <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5 mb-5">
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -19,7 +84,7 @@
                     <img class="position-relative w-100" src="{% static 'img/carousel-1.jpg' %}" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-md-3">Best Online Tutor</h5>
+                            <h5 class="text-white text-uppercase mb-md-3">Best Online Mentorship</h5>
                             <h1 class="display-3 text-white mb-md-4">Best Education From Your Home</h1>
                             <a href="{% url 'core:services' %}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
                         </div>
@@ -39,7 +104,7 @@
                     <img class="position-relative w-100" src="{% static 'img/hello.jpeg' %}" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-md-3">Best Business Sofware</h5>
+                            <h5 class="text-white text-uppercase mb-md-3">Best Application Developers</h5>
                             <h1 class="display-3 text-white mb-md-4">Good Software For Your Business</h1>
                             <a href="{% url 'core:services' %}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
                         </div>
@@ -56,7 +121,7 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" style="width: 100%; height: 25em;" src='{% static "img/about1.jpg" %}' alt="">
                 </div>
                 <div class="col-lg-7">
                     <div class="text-left mb-2">
@@ -102,47 +167,43 @@
     <!-- Category Start -->
 
     
-    {% if request.user.is_authenticated %}
-        
-    {% else %}
+    
     <!-- Registration Start -->
     <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="mb-4">
-                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Need Any Courses</h5>
-                        <h1 class="text-white">30% Off For New Students</h1>
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Need Any Assistant?</h5>
+                        <h1 class="text-white">30% Off For New Clients</h1>
                     </div>
-                    <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor</p>
-                    <ul class="list-inline text-white m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
-                    </ul>
+                    <p class="text-white">If you’re interested in any of our services be it tech consulting, software development, web design, or digital solutions don’t hesitate to reach out. We’re always ready to discuss your project and provide expert support tailored to your needs.</p>
+
+<p class="text-white">Have a question, concern, or complaint?
+We take client feedback seriously and are committed to resolving issues promptly and professionally.</p>
+                    
                 </div>
                 <div class="col-lg-5">
                     <div class="card border-0">
                         <div class="card-header bg-light text-center p-4">
+                            {% include 'components/message.html' %}
                             <h1 class="m-0">Email Us Now</h1>
                         </div>
                         <div class="card-body rounded-bottom p-5" style="background-color: #158cba;">
-                            <form method="post" >
+                            <form method="post">
                               {% csrf_token %}
                                 <div class="form-group">
-                                    <input type="text" name="fname" class="form-control border-0 p-4" placeholder="Your name" required="required" />
+                                    <input type="text" name="name" class="form-control border-0 p-4" placeholder="Your name" required="required" />
                                 </div>
                                 <div class="form-group">
                                     <input type="email"
-                            name="email"
+                            name="memail"
                             id="email"
                             pattern="[^ @]*@[^ @]*" class="form-control border-0 p-4" placeholder="Your email" required="required" />
                         </div>
                                 <div class="form-group">
                                     <label for="" class="form-label">Message:</label>
-                                    <textarea name="" class="form-control" cols="30" rows="5" id=""> </textarea>
+                                    <textarea name="msg" class="form-control" cols="30" rows="5" id=""> </textarea>
                                 </div>
                                 
                                 <div>
@@ -156,7 +217,7 @@
         </div>
     </div>
     <!-- Registration End -->
-    {% endif %}
+    
 
 <!-- Blog Start -->
     <div class="container-fluid py-5">
@@ -194,26 +255,26 @@
                 <h1>Meet Our Members</h1>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3 text-center team mb-4">
-                    <div class="team-item rounded overflow-hidden mb-2">
+                <div class="col-md-6 col-lg-4 text-center team mb-4">
+                    <div class="team-item rounded w-100 overflow-hidden mb-2">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="{% static 'img/team-1.jpg' %}" alt="">
+                            <img class="img-fluid" style="height: 20em; width: 100%;" src="{% static 'img/rando1.jpg' %}" alt="">
                             <div class="team-social">
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="https://x.com/home"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="https://web.facebook.com/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-light btn-square mx-1" href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                         <div class="bg-secondary p-4">
-                            <h5>Jhon Doe</h5>
-                            <p class="m-0">Web Designer</p>
+                            <h5>Aliyu Muhammad Musa</h5>
+                            <p class="m-0">Web Developer</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                <div class="col-md-6 col-lg-4 text-center team mb-4">
                     <div class="team-item rounded overflow-hidden mb-2">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="{% static 'img/team-2.jpg' %}" alt="">
+                            <img class="img-fluid" style="height: 20em; width: 100%;" src="{% static 'img/profile.png' %}" alt="">
                             <div class="team-social">
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -221,15 +282,15 @@
                             </div>
                         </div>
                         <div class="bg-secondary p-4">
-                            <h5>Jhon Doe</h5>
-                            <p class="m-0">Web Designer</p>
+                            <h5>Bashir Umar Liman</h5>
+                            <p class="m-0">Software Developer</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-4">
+                <div class="col-md-6 col-lg-4 text-center team mb-4">
                     <div class="team-item rounded overflow-hidden mb-2">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="{% static 'img/team-3.jpg' %}" alt="">
+                            <img class="img-fluid" style="height: 20em; width: 100%;" src="{% static 'img/profile.png' %}" alt="">
                             <div class="team-social">
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -237,35 +298,18 @@
                             </div>
                         </div>
                         <div class="bg-secondary p-4">
-                            <h5>Jhon Doe</h5>
-                            <p class="m-0">Web Designer</p>
+                            <h5>Hussaini Lawan</h5>
+                            <p class="m-0">Data Analyst</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-4">
-                    <div class="team-item rounded overflow-hidden mb-2">
-                        <div class="team-img position-relative">
-                            <img class="img-fluid" src="{% static 'img/team-4.jpg' %}" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-secondary p-4">
-                            <h5>Jhon Doe</h5>
-                            <p class="m-0">Web Designer</p>
-                        </div>
-                    </div>
+               
                 </div>
             </div>
         </div>
     </div>
     <!-- Team End -->
 
-    {% if request.user.is_authenticated %}
-        
-    {% else %}
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
@@ -278,24 +322,24 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
+                            <h4 class="font-weight-normal mb-4">As a small business owner, I needed a website that could grow with me. RandoTech delivered a clean, fast, and mobile-friendly solution. I can now manage orders, receive payments, and showcase my products with zero stress.</h4>
                             <img class="img-fluid mx-auto mb-3" src="{% static 'img/testimonial-1.jpg' %}" alt="">
-                            <h5 class="m-0">Client Name</h5>
-                            <span>Profession</span>
+                            <h5 class="m-0">Halima Adam</h5>
+                            <span>Online Retailer</span>
                         </div>
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
+                            <h4 class="font-weight-normal mb-4">What impressed us most was how quickly RandoTech understood our project goals. From user registration flows to marketplace features, they handled everything. Plus, their UI upgrades made our app look premium.</h4>
                             <img class="img-fluid mx-auto mb-3" src="{% static 'img/testimonial-2.jpg' %}" alt="">
-                            <h5 class="m-0">Client Name</h5>
-                            <span>Profession</span>
+                            <h5 class="m-0">Nasir Yunusa</h5>
+                            <span>Student</span>
                         </div>
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
+                            <h4 class="font-weight-normal mb-4">Our previous developers couldn’t integrate Paystack or Amazon SES properly, but RandoTech got it right in just days. Their support is reliable, and their code is top-notch. Highly recommended for any serious tech project.</h4>
                             <img class="img-fluid mx-auto mb-3" src="{% static 'img/testimonial-3.jpg' %}" alt="">
-                            <h5 class="m-0">Client Name</h5>
-                            <span>Profession</span>
+                            <h5 class="m-0">Mary O</h5>
+                            <span>Tech Consultant</span>
                         </div>
                     </div>
                 </div>
@@ -303,7 +347,7 @@
         </div>
     </div>
     <!-- Testimonial End -->
-    {% endif %}
+{% endif %}
 
     
 {% endblock content %}

@@ -13,3 +13,8 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
     list_display = ['name', 'price']
+
+@admin.register(ContactEmail)
+class ContactEmailAdmin(admin.ModelAdmin):
+    list_display = ['name', 'memail', 'msg']
+
