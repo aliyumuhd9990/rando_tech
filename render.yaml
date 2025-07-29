@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: django-sqlite-app
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn randotech_web.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: your_project_name.settings

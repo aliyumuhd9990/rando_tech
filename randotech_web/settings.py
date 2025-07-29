@@ -89,12 +89,12 @@ DATABASES = {
        'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'randotechdb',
-        # 'USER' : 'randotechdb_user',
-        # 'PASSWORD' : 'yHwEBTJWMxlLyWOGeAbIupmEIYKEJuFT',
-        # 'HOST' : 'dpg-d1sv7rmmcj7s73avgsu0-a',
-        # 'PORT' : '5432',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'sql10792348',
+        # 'USER' : 'sql10792348',
+        # 'PASSWORD' : 'cHljXhW5xV',
+        # 'HOST' : 'sql10.freesqldatabase.com',
+        # 'PORT' : '3306',
         # 'OPTIONS' : {
         #     'sslmode' : 'require',
         # }
@@ -174,12 +174,13 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 #Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-relay.brevo.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'aliyumuhammad9990@gmail.com'
-EMAIL_HOST_PASSWORD = 'uieu bujj lpeg iptu'
+EMAIL_HOST_USER = '93689e001@smtp-brevo.com'
+EMAIL_HOST_PASSWORD = 'X2GOLWpmvy4Ptab0'
+DEFAULT_FROM_EMAIL = 'RandoTech <randotech55@gmail.com>'
 
 
 #admin customization
