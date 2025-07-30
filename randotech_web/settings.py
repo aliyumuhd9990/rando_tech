@@ -89,21 +89,19 @@ DATABASES = {
        'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-<<<<<<< HEAD
+
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'sql10792348',
         # 'USER' : 'sql10792348',
         # 'PASSWORD' : 'cHljXhW5xV',
         # 'HOST' : 'sql10.freesqldatabase.com',
         # 'PORT' : '3306',
-=======
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'randotechdb',
         # 'USER' : 'randotechdb_user',
         # 'PASSWORD' : 'yHwEBTJWMxlLyWOGeAbIupmEIYKEJuFT',
         # 'HOST' : 'dpg-d1sv7rmmcj7s73avgsu0-a',
         # 'PORT' : '5432',
->>>>>>> ae0308c (update 01)
         # 'OPTIONS' : {
         #     'sslmode' : 'require',
         # }
