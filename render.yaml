@@ -6,4 +6,4 @@ services:
     startCommand: "gunicorn randotech_web.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: your_project_name.settings
+        value: randotech_web.settings
