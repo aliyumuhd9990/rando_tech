@@ -12,7 +12,7 @@ def IndexView(request):
     # user = request.user
     posts = Post.published.all()[:4]
     category = Category.objects.all()
-    service = Service.objects.all()
+    service = Service.objects.all().order_by('name')
     services = Service.objects.all()
     # acc = Profile.objects.get(user=user)
     
