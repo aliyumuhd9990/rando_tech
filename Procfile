@@ -1,0 +1,1 @@
+web: gunicorn randotech_web.wsgi
