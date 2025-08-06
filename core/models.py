@@ -31,3 +31,11 @@ class ContactEmail(models.Model):
     memail = models.EmailField(max_length=225)
     msg = models.TextField()
     
+class Showcase(models.Model):
+    work = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='showcase', default=2)
+    name = models.CharField(max_length = 50)
+    cover_img = models.ImageField(upload_to='img/post_cover')
+    link = models.CharField(max_length = 100)
+    price = models.IntegerField(default=0)
+    
+    

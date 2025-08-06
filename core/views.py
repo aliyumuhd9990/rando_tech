@@ -10,7 +10,7 @@ app_name = 'core'
 # Create your views here.
 def IndexView(request):
     # user = request.user
-    posts = Post.published.all()[:4]
+    posts = Post.published.all()[:3]
     category = Category.objects.all()
     service = Service.objects.all().order_by('name')
     services = Service.objects.all()
@@ -55,6 +55,16 @@ def ServicesView(request):
 def ContactView(request):
     services = Service.objects.all()
     
+    if request.method == 'POST':
+        name = request.POST['name']
+        memail = request.POST['memail']
+        msg = request.POST['msg']
+        
+        contact = ContactEmail.objects.create(name=name, memail=memail, msg=msg)
+        contact.save()
+        messages.success(request, 'Message sent successful!')
+        return redirect(reverse('core:contact'))
+    
     context = {
         'services' : services,
     }
@@ -64,10 +74,13 @@ def ServiceDetailView(request, id):
     service = get_object_or_404(Service, id=id)
     services = Service.objects.all()
     package = Package.objects.all()
+    showcase = Showcase.objects.all()
+    
     context = {
         'service' : service,
         'services' : services,
         'package' : package,
+        'showcase' : showcase,
     }
     return render(request, 'core/service_detail.html', context)
 
@@ -103,3 +116,5 @@ def AskView(request):
         'services' : services,
     }
     return render(request, 'some_pages/ask_questions.html', context)
+
+

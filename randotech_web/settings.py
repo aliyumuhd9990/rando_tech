@@ -15,9 +15,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-leob4qo(_yvxof!j!%t@&v43$&^gx2)2=45myzg$ic0*fyw(rx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['randotech55.up.railway.app',]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://randotech55.up.railway.app',
+]
 
 
 # Application definition
@@ -80,22 +84,17 @@ WSGI_APPLICATION = 'randotech_web.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': dj_database_url.config(
-    #     default='postgresql://postgres:pkiuCZNHUYWKPszQbbyeqvBQcekrzDOZ@nozomi.proxy.rlwy.net:27697/railway',
-    #     conn_max_age=600,
-    #     ssl_require=True
-    # )
+    'default': dj_database_url.config(
+        default='postgresql://postgres:jbnDurchjRQFzqLMAeLtjvXNjHaUkvYW@crossover.proxy.rlwy.net:32406/railway',
+        conn_max_age=600,
+        ssl_require=True
+    )
         
-       'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    #    'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
 
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'sql10792348',
-        # 'USER' : 'sql10792348',
-        # 'PASSWORD' : 'cHljXhW5xV',
-        # 'HOST' : 'sql10.freesqldatabase.com',
-        # 'PORT' : '3306',
+      
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'randotechdb',
         # 'USER' : 'randotechdb_user',
@@ -108,7 +107,7 @@ DATABASES = {
         
         
 
-    }
+    # }
 }
 
 

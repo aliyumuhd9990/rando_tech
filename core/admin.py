@@ -18,3 +18,7 @@ class PackageAdmin(admin.ModelAdmin):
 class ContactEmailAdmin(admin.ModelAdmin):
     list_display = ['name', 'memail', 'msg']
 
+@admin.register(Showcase)
+class ShowcaseAdmin(admin.ModelAdmin):
+    list_display = ('name','link')
+

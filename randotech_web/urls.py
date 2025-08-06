@@ -10,7 +10,7 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     # Include set_language!
     path("i18n/", include("django.conf.urls.i18n")),
-    path('admin/', admin.site.urls),
+    path('randotech55_admin_page/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('', include('core.urls', namespace='core')),
     path('blog/', include('blog.urls', namespace='blog')),

@@ -1,5 +1,11 @@
-
-    <form class="d-flex" method="get" role="search" action="{% url 'products:products-list' %}">
-      <input class="form-control me-2" name="q" type="search" placeholder="Search Crops" aria-label="Search" value='{{ query|default_if_none:"" }}'>
-      <button class="btn btn-outline-dark" type="submit">Search</button>
-    </form>
+                    <!-- Search Form -->
+                    <div class="mb-5 p-3 container">
+                        <form method="get" role="search" action="{% url 'blog:post_search' %}">
+                            <div class="input-group">
+                                <input type="search" name="q" class="form-control form-control-lg" placeholder="Search Post" value="{{ request.GET.q }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>

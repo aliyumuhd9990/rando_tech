@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.core.paginator import Paginator
 from django.urls import reverse
+from django.db.models import Q
 
 
 app_name= 'blog'
@@ -17,7 +18,6 @@ def PostListView(request):
     services = Service.objects.all()
     paginator = Paginator(post_list, 6)  # Show 6 posts per page
 
-          
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     
@@ -185,3 +185,19 @@ def DeletePostView(request,year, month, day, post):
     post.delete()
     messages.success(request, 'Post deleted successful!!')
     return redirect(reverse('blog:post_list'))
+
+def SearchView(request):
+    query = request.GET.get('q')
+    
+    if query:
+        posts = Post.objects.filter(
+        Q(title__icontains=query) 
+    )
+    else:
+        posts = Post.objects.none()
+    
+    context = {
+        'posts': posts, 
+        'query': query,
+        }
+    return render(request, 'components/post_search.html', context)

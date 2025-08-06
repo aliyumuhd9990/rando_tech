@@ -91,40 +91,30 @@
                 </div>
                 <h2 class="mt-3">Showcase Our Work</h2>
                    <!-- Category Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/cat-1.jpg' %}" alt="">
-                        <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Web Design</h4>
-                            <span>100 Courses</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/cat-2.jpg' %}" alt="">
-                        <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Development</h4>
-                            <span>100 Courses</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{% static 'img/cat-3.jpg' %}" alt="">
-                        <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Game Design</h4>
-                            <span>100 Courses</span>
-                        </a>
-                    </div>
-                </div>
-
+                   
+                   {% if service.showcase.all|length > 0 %}
+                   {% for s in service.showcase.all %}
+                   <div class="container-fluid py-5">
+                     <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="cat-item position-relative overflow-hidden rounded mb-2">
+              <img class="img-fluid w-100" src="{{s.cover_img.url}}" alt="" style="height: 10em;">
+              <a class="cat-overlay text-white text-decoration-none" href="{{s.link}}">
+                <h4 class="text-white font-weight-medium">{{s.name}}</h4>
+                <span>&#8358;{{s.price}}</span>
+              </a>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+    {% endfor %}
+    {% else %}
+    <p>No Available Work yet</p>
+    {% endif %}
+        
+       
     <!-- Category Start -->
 
 
@@ -159,16 +149,16 @@
               <p><i class="fa fa-phone-alt mr-2"></i>+234 802 676 1796</p>
               <p><i class="fa fa-envelope mr-2"></i>randotech55@gmail.com</p>
               <div class="d-flex justify-content-start mt-4">
-                <a class="btn btn-outline-light btn-square mr-2" href="https://x.com/home"
+                <a class="btn btn-outline-light btn-square mr-2" href="" onclick="alert('Section not Available!')"
                   ><i class="fab fa-twitter"></i
                 ></a>
-                <a class="btn btn-outline-light btn-square mr-2" href="https://web.facebook.com/?_rdc=1&_rdr#"
+                <a class="btn btn-outline-light btn-square mr-2" href="https://web.facebook.com/profile.php?id=100089952922680"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
-                <a class="btn btn-outline-light btn-square mr-2" href="https://www.linkedin.com/feed/"
+                <a class="btn btn-outline-light btn-square mr-2" href="" onclick="alert('Section not Available!')"
                   ><i class="fab fa-linkedin-in"></i
                 ></a>
-                <a class="btn btn-outline-light btn-square" href="https://www.instagram.com/aliyumuhd9990/"
+                <a class="btn btn-outline-light btn-square" href="https://www.instagram.com/randotech55/"
                   ><i class="fab fa-instagram"></i
                 ></a>
               </div>

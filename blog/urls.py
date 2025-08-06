@@ -11,5 +11,6 @@ urlpatterns = [
     path('your_post/', YourPostView, name='your_post'),
     path('edit_post/<int:year>/<int:month>/<int:day>/<slug:post>/', EditPostView, name='edit_post'),
     path('delete_post/<int:year>/<int:month>/<int:day>/<slug:post>/', DeletePostView, name='delete_post'),
+    path('post-search/',  SearchView, name='post_search'),
 ]
 
